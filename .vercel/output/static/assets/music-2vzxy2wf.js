@@ -1,0 +1,1 @@
+import{s as e}from"./link-ByeF3nDZ.js";import{t}from"./PortalView-DBYOsUGv.js";var n=e(),r=()=>(0,n.jsx)(t,{portal:`music`});export{r as component};

@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "fourtee2 — A Brand Universe",
+      "hasCanvas": false,
+      "bodyTextLen": 348,
+      "bodyTextHash": "5030eee3f0f1f2213dac855ff0968102319f2a3eaf205ec8398a75759301c590",
+      "bodyTextPrefix": "fourtee2 MAP WORLDS SEARCH ABOUT BOARD A BRAND UNIVERSE / LIVE W",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "fourtee2 — A Brand Universe",
+      "hasCanvas": false,
+      "bodyTextLen": 366,
+      "bodyTextHash": "8e4a5981dfc4dde9e80fa04baa4eab20c63963256d013ac6771c6d84b2955f08",
+      "bodyTextPrefix": "fourtee2 MAP WORLDS SEARCH ABOUT BOARD A BRAND UNIVERSE / LIVE W",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}
