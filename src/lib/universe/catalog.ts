@@ -28,16 +28,18 @@ export type GalaxyRelationship = {
 export const galaxyWorlds: GalaxyWorld[] = [
   { id: "haus", name: "fourtee2 haus", type: "planet", status: "ACTIVE", category: "house", description: "The house. A star cluster to one side, the family of planets ahead, and new worlds out in the void.", url: "/worlds/haus", x: 50, y: 14, scale: 1.12, color: "#e3af5d", children: ["cdxi", "fourtee2", "fleshsesh"], keywords: ["haus", "house", "origin", "organisation"] },
   { id: "cdxi", name: "cdxi", type: "star", status: "ACTIVE", category: "creative", description: "The star. Client work gathers around it and stays part of the cluster.", url: "/worlds/cdxi", x: 20, y: 46, scale: 2.3, color: "#c9b6ff", children: ["corporate clients", "outside the family"], keywords: ["cdxi", "star", "cluster", "clients"] },
-  { id: "corporate", name: "corporate clients", label: "clients", type: "star", status: "ACTIVE", category: "client", description: "Client work. Part of the cluster, not a planet of its own.", url: "/worlds/corporate", x: 9, y: 28, scale: 1.15, color: "#9eb6e8", children: ["identity", "systems", "delivery"], keywords: ["corporate", "clients", "cluster", "cdxi"] },
+  { id: "corporate", name: "corporate clients", label: "clients", type: "star", status: "ACTIVE", category: "client", description: "Client work. Part of the cluster, not a planet of its own. Origin Atlas sits here.", url: "/worlds/corporate", x: 9, y: 28, scale: 1.15, color: "#9eb6e8", children: ["origin atlas", "identity", "systems"], keywords: ["corporate", "clients", "cluster", "cdxi", "atlas"] },
   { id: "outside", name: "outside the family", label: "outside", type: "star", status: "ACTIVE", category: "client", description: "Work that is not a fourtee2 brand. Still part of the cluster.", url: "/worlds/outside", x: 11, y: 68, scale: 1.05, color: "#e4c48a", children: ["independent work", "collaborations"], keywords: ["outside", "cluster", "clients", "cdxi", "family"] },
-  { id: "fourtee2", name: "fourtee2", type: "planet", status: "ACTIVE", category: "house", description: "The family. These are planets: travel, sound, ritual, digital, labs, cinevo and the atlas.", url: "/worlds/fourtee2", x: 48, y: 42, scale: 1.02, color: "#efe7d2", children: ["fourtee2travel", "4[music]2", "4[you]2", "fourtee2digital", "cinevo", "fourtee2 labs", "origin atlas"], keywords: ["fourtee2", "family", "planets", "brands"] },
+  { id: "fourtee2", name: "fourtee2", type: "planet", status: "ACTIVE", category: "house", description: "The family. These are planets: travel, media, ritual, digital and labs.", url: "/worlds/fourtee2", x: 48, y: 42, scale: 1.02, color: "#efe7d2", children: ["fourtee2travel", "fourtee2media", "4[you]2", "fourtee2digital", "fourtee2 labs"], keywords: ["fourtee2", "family", "planets", "brands"] },
   { id: "travel", name: "fourtee2travel", type: "planet", status: "ACTIVE", category: "travel", description: "A one-stop travel intelligence world for routes, stays and every travel priority.", url: "/travel", x: 33, y: 26, scale: 0.8, color: "#e3af5d", children: ["route intelligence", "field notes", "signal board"], keywords: ["travel", "routes", "flights", "stays", "value", "luxury"] },
-  { id: "music", name: "4[music]2", type: "planet", status: "ACTIVE", category: "media", description: "Selected transmissions, ambient listening modes and a living frequency field.", url: "/music", x: 58, y: 30, scale: 0.76, color: "#8c7cff", children: ["selected playlist", "frequency field", "signal queue"], keywords: ["music", "sound", "playlist", "media", "frequency"] },
+  { id: "fourtee2media", name: "fourtee2media", label: "media", type: "planet", status: "ACTIVE", category: "media", description: "The media field. Fourtee blue, a signal mark, and the projects that broadcast from the house.", url: "/worlds/fourtee2media", x: 60, y: 22, scale: 0.86, color: "#0055FF", children: ["4[music]2", "The Others in the Room"], keywords: ["media", "fourtee2media", "broadcast", "signal", "blue"] },
+  { id: "music", name: "4[music]2", type: "planet", status: "ACTIVE", category: "media", description: "A fourtee2media project. Selected transmissions, ambient listening modes and a living frequency field.", url: "/music", x: 72, y: 30, scale: 0.7, color: "#3B6FFF", children: ["selected playlist", "frequency field", "signal queue"], keywords: ["music", "sound", "playlist", "media", "frequency", "fourtee2media"] },
+  { id: "others", name: "The Others in the Room", label: "others", type: "planet", status: "ACTIVE", category: "media", description: "A fourtee2media project. The room, the voices, and the people who stay in it.", url: "/worlds/others", x: 48, y: 28, scale: 0.64, color: "#7EB6FF", children: ["the room", "voices", "episodes"], keywords: ["others", "room", "podcast", "media", "fourtee2media", "voices"] },
   { id: "you", name: "4[you]2", type: "planet", status: "BUILDING", category: "personal", description: "A personal world for ritual, care, energy and everyday performance.", url: "/you", x: 70, y: 42, scale: 0.76, color: "#bd77ed", children: ["ritual field", "care protocols", "performance signals"], keywords: ["you", "ritual", "care", "personal", "energy"] },
-  { id: "fourtee2digital", name: "fourtee2digital", label: "digital", type: "planet", status: "ACTIVE", category: "technology", description: "Digital products, intelligent systems and brand experiences built for the next field.", url: "/worlds/fourtee2digital", x: 32, y: 58, scale: 0.72, color: "#5ac4e8", children: ["products", "AI systems", "digital experiences"], keywords: ["technology", "digital", "AI", "products", "fourtee2digital"] },
-  { id: "cinevo", name: "cinevo", type: "planet", status: "BUILDING", category: "technology", description: "A fourtee2 media world: a private library, shared on your terms.", url: "/worlds/cinevo", x: 48, y: 64, scale: 0.7, color: "#54c9ec", children: ["server", "library", "profiles"], keywords: ["media", "server", "technology", "library"] },
+  { id: "fourtee2digital", name: "fourtee2digital", label: "digital", type: "planet", status: "ACTIVE", category: "technology", description: "Digital products and intelligent systems. Cinevo, the private library, lives here.", url: "/worlds/fourtee2digital", x: 32, y: 58, scale: 0.72, color: "#5ac4e8", children: ["cinevo", "products", "AI systems"], keywords: ["technology", "digital", "AI", "products", "fourtee2digital", "cinevo"] },
+  { id: "cinevo", name: "cinevo", type: "planet", status: "BUILDING", category: "technology", description: "A fourtee2digital project. A private library, shared on your terms.", url: "/worlds/cinevo", x: 22, y: 76, scale: 0.58, color: "#54c9ec", children: ["server", "library", "profiles"], keywords: ["media", "server", "technology", "library", "fourtee2digital"] },
   { id: "fourtee2labs", name: "fourtee2 labs", label: "labs", type: "planet", status: "EXPLORING", category: "research", description: "Research, prototypes and experiments at the edge of the fourtee2 field.", url: "/worlds/fourtee2labs", x: 64, y: 60, scale: 0.72, color: "#eab75e", children: ["prototypes", "research", "experiments"], keywords: ["research", "labs", "AI", "experiments"] },
-  { id: "origin-atlas", name: "origin atlas", label: "atlas", type: "planet", status: "EXPLORING", category: "research", description: "A growing atlas of origin, pattern, systems and the routes between them.", url: "/worlds/origin-atlas", x: 46, y: 82, scale: 0.64, color: "#dfb15c", children: ["atlas", "research index", "field mapping"], keywords: ["research", "atlas", "mapping", "origins", "origin"] },
+  { id: "origin-atlas", name: "origin atlas", label: "atlas", type: "star", status: "EXPLORING", category: "client", description: "A cdxi client project. An atlas of origin, pattern, systems and the routes between them.", url: "/worlds/origin-atlas", x: 22, y: 16, scale: 0.58, color: "#dfb15c", children: ["atlas", "research index", "field mapping"], keywords: ["atlas", "mapping", "origins", "cdxi", "clients", "cluster"] },
   { id: "fleshsesh", name: "fleshsesh", type: "world", status: "ACTIVE", category: "creative", description: "A new world, out in the void. Academy, the meat app and sinorgy models are forming with it.", url: "/worlds/fleshsesh", x: 86, y: 38, scale: 0.9, color: "#e47ebc", children: ["academy", "meat app", "sinorgy models"], keywords: ["fleshsesh", "void", "new world", "culture"] },
   { id: "academy", name: "academy", type: "world", status: "ACTIVE", category: "creative", description: "A new world in the void. The fleshsesh academy: study, presence and showing up.", url: "/worlds/academy", x: 78, y: 18, scale: 0.66, color: "#f0a0c8", children: ["study", "sessions", "practice"], keywords: ["academy", "fleshsesh", "void", "education"] },
   { id: "meat", name: "meat app", label: "meat", type: "world", status: "BUILDING", category: "creative", description: "A new world in the void. The app for training, sessions and the body in practice.", url: "/worlds/meat", x: 93, y: 56, scale: 0.64, color: "#d4655a", children: ["sessions", "training", "log"], keywords: ["meat", "app", "fleshsesh", "void"] },
@@ -51,12 +53,14 @@ export const galaxyRelationships: GalaxyRelationship[] = [
   { source: "corporate", target: "cdxi", relationshipType: "PART OF THE CLUSTER" },
   { source: "outside", target: "cdxi", relationshipType: "PART OF THE CLUSTER" },
   { source: "travel", target: "fourtee2", relationshipType: "PART OF" },
-  { source: "music", target: "fourtee2", relationshipType: "PART OF" },
+  { source: "fourtee2media", target: "fourtee2", relationshipType: "PART OF" },
+  { source: "music", target: "fourtee2media", relationshipType: "PART OF" },
+  { source: "others", target: "fourtee2media", relationshipType: "PART OF" },
   { source: "you", target: "fourtee2", relationshipType: "PART OF" },
   { source: "fourtee2digital", target: "fourtee2", relationshipType: "PART OF" },
-  { source: "cinevo", target: "fourtee2", relationshipType: "PART OF" },
+  { source: "cinevo", target: "fourtee2digital", relationshipType: "PART OF" },
   { source: "fourtee2labs", target: "fourtee2", relationshipType: "PART OF" },
-  { source: "origin-atlas", target: "fourtee2", relationshipType: "PART OF" },
+  { source: "origin-atlas", target: "corporate", relationshipType: "PART OF THE CLUSTER" },
   { source: "academy", target: "fleshsesh", relationshipType: "IN THE VOID" },
   { source: "meat", target: "fleshsesh", relationshipType: "IN THE VOID" },
   { source: "sinorgy-models", target: "fleshsesh", relationshipType: "IN THE VOID" },
@@ -65,8 +69,8 @@ export const galaxyRelationships: GalaxyRelationship[] = [
 export type JourneyId = "cluster" | "family" | "void";
 
 export const journeys: { id: JourneyId; title: string; line: string; stops: string[] }[] = [
-  { id: "cluster", title: "THE CLUSTER", line: "A star, and the client work around it.", stops: ["haus", "cdxi", "corporate", "outside"] },
-  { id: "family", title: "THE FAMILY", line: "The planets that carry the name.", stops: ["haus", "fourtee2", "travel", "music", "you", "fourtee2digital", "cinevo", "fourtee2labs", "origin-atlas"] },
+  { id: "cluster", title: "THE CLUSTER", line: "A star, and the client work around it.", stops: ["haus", "cdxi", "corporate", "origin-atlas", "outside"] },
+  { id: "family", title: "THE FAMILY", line: "The planets that carry the name.", stops: ["haus", "fourtee2", "fourtee2media", "music", "others", "travel", "you", "fourtee2digital", "cinevo", "fourtee2labs"] },
   { id: "void", title: "THE VOID", line: "New worlds, still forming.", stops: ["haus", "fleshsesh", "academy", "meat", "sinorgy-models"] },
 ];
 
@@ -106,7 +110,7 @@ export function worldDepth(id: string) {
 
 export function worldField(id: string): "house" | "cluster" | "family" | "void" {
   if (id === "haus") return "house";
-  if (id === "cdxi" || id === "corporate" || id === "outside") return "cluster";
+  if (id === "cdxi" || id === "corporate" || id === "outside" || id === "origin-atlas") return "cluster";
   if (id === "fleshsesh" || id === "academy" || id === "meat" || id === "sinorgy-models") return "void";
   return "family";
 }
@@ -125,7 +129,7 @@ export function worldLabel(world: GalaxyWorld) {
 }
 
 export function isWordmark(name: string) {
-  return name.toLowerCase().includes("fourtee2") || name.startsWith("4[");
+  return name !== "fourtee2media" && (name.toLowerCase().includes("fourtee2") || name.startsWith("4["));
 }
 
 export type WorldMaterial = {
@@ -135,20 +139,22 @@ export type WorldMaterial = {
 
 export const worldMaterials: Record<string, WorldMaterial> = {
   haus: { fieldNote: "The house holds three kinds of body. A cluster, a family of planets, and new worlds in the void.", observation: "One house. Three fields." },
-  fourtee2: { fieldNote: "The family of planets that carry the fourtee2 name.", observation: "Travel, sound, ritual, digital, labs." },
+  fourtee2: { fieldNote: "The family of planets that carry the fourtee2 name. Media has its own field underneath.", observation: "Travel, media, ritual, digital, labs." },
   travel: { fieldNote: "Route intelligence begins with a human preference, then resolves the world around it.", observation: "Routes reframed through price, place and pace." },
-  music: { fieldNote: "A living listening field for transmissions that keep the night in motion.", observation: "Frequency held beyond the visible spectrum." },
+  fourtee2media: { fieldNote: "The media brand of the house. Fourtee blue on carbon or off-white, and a signal that marks the broadcast.", observation: "Sound and rooms. Both projects live here." },
+  music: { fieldNote: "A fourtee2media project. A living listening field for transmissions that keep the night in motion.", observation: "Frequency, held by the media field." },
+  others: { fieldNote: "A fourtee2media project. The Others in the Room: voices, presence, and whoever stays after the noise.", observation: "A room is a broadcast with the door shut." },
   you: { fieldNote: "A quieter system for restoring attention, energy and the rituals that hold a day together.", observation: "The body is a planet with its own weather." },
-  cinevo: { fieldNote: "Private media, remembered properly: a personal archive that stays close to its owner.", observation: "Memory becomes a system when it can be returned to." },
+  cinevo: { fieldNote: "A fourtee2digital project. A private library that stays close to its owner.", observation: "Memory becomes a system when it can be returned to." },
   cdxi: { fieldNote: "A star. Client work gathers here and stays part of the cluster.", observation: "Close work. Not a planet." },
   corporate: { fieldNote: "Organisations that hire the practice. The work stays with the client.", observation: "Part of the cluster." },
   outside: { fieldNote: "Projects that do not wear the fourtee2 name. They still belong to the cluster.", observation: "Outside the family. Still in the cluster." },
   fleshsesh: { fieldNote: "A new world forming in the void, with the academy, the meat app and sinorgy.", observation: "Not yet a planet. Already a world." },
   academy: { fieldNote: "The teaching arm of fleshsesh. Sessions, study and the practice of presence.", observation: "A school is a slow orbit." },
   meat: { fieldNote: "The app for the work of the body. Sessions logged, training kept close.", observation: "The practice needs a place to live." },
-  fourtee2digital: { fieldNote: "Digital products and intelligent systems shaped with the clarity of an enduring identity.", observation: "Technology should feel like an extension of intention." },
+  fourtee2digital: { fieldNote: "Digital products and intelligent systems. Cinevo reports here.", observation: "The library lives inside the digital field." },
   fourtee2labs: { fieldNote: "A boundary field for prototypes, research and the futures worth making tangible.", observation: "An experiment is a question allowed to acquire form." },
-  "origin-atlas": { fieldNote: "A mapping practice for first principles, hidden structures and the routes between them.", observation: "Every system leaves a trace of where it started." },
+  "origin-atlas": { fieldNote: "A cdxi client project, held with the other client work.", observation: "Every system leaves a trace of where it started." },
   "sinorgy-models": { fieldNote: "Talent and visual culture, held in the void with fleshsesh.", observation: "A presence can carry an entire atmosphere." },
 };
 
@@ -169,6 +175,14 @@ export const worldSystems: Record<string, WorldSystem[]> = {
     { id: "frequency-mod", title: "Frequency Mod", description: "Adjust the spectral density of the current transmission.", actionLabel: "MODULATE", detail: "Current density: 0.84 spectral units." },
     { id: "queue-manager", title: "Queue Manager", description: "Manage the sequence of incoming audio signals.", actionLabel: "REORDER", detail: "22 tracks in manifest. Sequence held in the listening field." },
   ],
+  fourtee2media: [
+    { id: "signal", title: "Signal", description: "The broadcast mark. Three arcs, Fourtee blue, used beside the wordmark.", actionLabel: "HOLD", detail: "Icon clear space is the height of the mark." },
+    { id: "projects", title: "Projects", description: "4[music]2 and The Others in the Room both report here.", actionLabel: "OPEN", detail: "Nothing in this field broadcasts under another name." },
+  ],
+  others: [
+    { id: "room", title: "The Room", description: "A held space for the voices that stay.", actionLabel: "ENTER", detail: "A fourtee2media project. The door stays with the media field." },
+    { id: "voices", title: "Voices", description: "Who is in the room, and who is only passing through.", actionLabel: "LISTEN", detail: "Episodes live with the project, not with the house." },
+  ],
   you: [
     { id: "ritual-timer", title: "Ritual Timer", description: "Timed intervals for restoration and performance protocols.", actionLabel: "START", detail: "20-minute protocol suggested for the current field." },
     { id: "care-index", title: "Care Index", description: "A library of care signals for biological maintenance.", actionLabel: "BROWSE", detail: "14 active protocols for restoration." },
@@ -182,11 +196,11 @@ export const worldSystems: Record<string, WorldSystem[]> = {
     { id: "governance", title: "House Rules", description: "The wordmark, the field, and what is allowed to carry the name.", actionLabel: "INSPECT", detail: "Righteous is locked to fourtee2. Branches keep their own names." },
   ],
   fourtee2: [
-    { id: "family", title: "Family Index", description: "Travel, music, you, digital, labs, cinevo and the origin atlas.", actionLabel: "LIST", detail: "Seven worlds currently report to this branch." },
+    { id: "family", title: "Family Index", description: "Travel, media, you, digital and labs.", actionLabel: "LIST", detail: "fourtee2media holds the broadcasts. fourtee2digital holds cinevo." },
     { id: "naming", title: "Naming", description: "What is allowed to wear fourtee2, and what must live elsewhere.", actionLabel: "READ", detail: "Outside work routes to cdxi. Culture routes to fleshsesh." },
   ],
   corporate: [
-    { id: "roster", title: "Client Roster", description: "Active organisations engaging cdxi for identity and systems.", actionLabel: "OPEN", detail: "Engagements are scoped per client. Nothing here is a fourtee2 product." },
+    { id: "roster", title: "Client Roster", description: "Active organisations, and Origin Atlas.", actionLabel: "OPEN", detail: "Origin Atlas reports here. Nothing on this roster is a fourtee2 product." },
     { id: "delivery", title: "Delivery", description: "How a client engagement moves from brief to field.", actionLabel: "INSPECT", detail: "Brief, system, handover. The client keeps the work." },
   ],
   outside: [
@@ -210,7 +224,7 @@ export const worldSystems: Record<string, WorldSystem[]> = {
     { id: "academy-access", title: "Academy Access", description: "Membership protocols for the fleshsesh culture world.", actionLabel: "VERIFY", detail: "Identity verified. All fields accessible." },
   ],
   fourtee2digital: [
-    { id: "product-manifest", title: "Product Manifest", description: "Detailed specifications for digital systems and apps.", actionLabel: "DOWNLOAD", detail: "Manifest 2026.4 available as a field note." },
+    { id: "product-manifest", title: "Product Manifest", description: "Digital systems, and cinevo beneath them.", actionLabel: "OPEN", detail: "Cinevo is the private library. It reports to fourtee2digital." },
     { id: "ai-orchestrator", title: "AI Orchestrator", description: "Central management for distributed intelligent systems.", actionLabel: "MONITOR", detail: "4 nodes active. Average response: 420ms." },
   ],
   fourtee2labs: [
@@ -219,7 +233,7 @@ export const worldSystems: Record<string, WorldSystem[]> = {
   ],
   "origin-atlas": [
     { id: "map-layer", title: "Map Layer", description: "Toggle between historical and future system routes.", actionLabel: "TOGGLE", detail: "Currently viewing: ORIGIN MAP (Historical)." },
-    { id: "pattern-match", title: "Pattern Match", description: "Identify recurring structures across the universe.", actionLabel: "SCAN", detail: "Structural matches run across the fourtee2 branch." },
+    { id: "pattern-match", title: "Pattern Match", description: "Identify recurring structures across the client work.", actionLabel: "SCAN", detail: "Held with cdxi clients, part of the cluster." },
   ],
   "sinorgy-models": [
     { id: "talent-index", title: "Talent Index", description: "Active profiles of collaborators and practitioners.", actionLabel: "SEARCH", detail: "Held with fleshsesh, in the void." },

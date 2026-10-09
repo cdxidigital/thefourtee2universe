@@ -269,7 +269,16 @@
   pointer-events: none;
   background:
     linear-gradient(to bottom, rgba(5, 6, 12, 0.28) 0%, rgba(5, 6, 12, 0.45) 36%, rgba(5, 6, 12, 0.9) 68%, #05060c 100%);
-  animation: lift 1.25s cubic-bezier(0.16, 0.84, 0.22, 1) forwards;
+  animation: lift 1.68s cubic-bezier(0.16, 0.84, 0.22, 1) forwards;
+}
+
+.hero:has(.lift) .local-sky {
+  animation: sky-lift 1.68s cubic-bezier(0.45, 0.02, 0.2, 1) forwards;
+}
+
+.hero:has(.lift) .hero-copy,
+.hero:has(.lift) .world-signal {
+  animation: sink 1.2s ease forwards;
 }
 
 .lift h2 {
@@ -299,7 +308,7 @@
   width: 1px;
   height: 22vh;
   background: linear-gradient(to bottom, transparent, rgba(255, 248, 230, 0.8), transparent);
-  animation: rush-up 0.72s linear infinite;
+  animation: rush-up 0.48s linear infinite;
 }
 
 .hero {
@@ -514,12 +523,14 @@
   transition: transform 1.15s cubic-bezier(0.16, 0.84, 0.24, 1);
 }
 
+.galaxy.is-flight .galaxy-field,
 .galaxy.is-departing .galaxy-field {
-  transition: transform 0.9s cubic-bezier(0.62, 0.04, 0.18, 1);
+  transition: transform 2.15s cubic-bezier(0.14, 0.86, 0.18, 1);
 }
 
-.galaxy.is-flight .galaxy-field {
-  transition: transform 1.65s cubic-bezier(0.16, 0.84, 0.2, 1);
+.galaxy.is-flight .galaxy-scene,
+.galaxy.is-departing .galaxy-scene {
+  animation: cam-roll 2.3s cubic-bezier(0.16, 0.84, 0.2, 1);
 }
 
 .galaxy.is-dragging .galaxy-field {
@@ -586,6 +597,12 @@
   animation: twinkle 5.6s ease-in-out infinite;
 }
 
+.galaxy.is-flight .star,
+.galaxy.is-departing .star {
+  border-radius: 40%;
+  animation: streak 0.55s linear infinite;
+}
+
 .star--bright {
   box-shadow: 0 0 6px 1px rgba(255, 244, 220, 0.85), 0 0 16px rgba(190, 210, 255, 0.35);
 }
@@ -607,11 +624,44 @@
   left: 50%;
   top: 42%;
   width: 1.5px;
-  height: 24vh;
+  height: 34vh;
   margin-left: -1px;
   transform-origin: 50% 0;
-  background: linear-gradient(to bottom, rgba(255, 248, 230, 0.9), rgba(180, 200, 255, 0.15), transparent);
-  animation: warp-ray 0.7s linear infinite;
+  background: linear-gradient(to bottom, rgba(255, 248, 230, 0.95), rgba(180, 200, 255, 0.2), transparent);
+  animation: warp-ray 0.46s linear infinite;
+}
+
+.flare {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at var(--ox, 50%) var(--oy, 40%), rgba(255, 246, 224, 0.55), transparent 46%);
+}
+
+.galaxy.is-flight .flare,
+.galaxy.is-departing .flare {
+  animation: flare 2.3s ease;
+}
+
+.reel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 7;
+  height: 0;
+  background: #05060c;
+  pointer-events: none;
+  transition: height 0.55s cubic-bezier(0.16, 0.84, 0.2, 1);
+}
+
+.reel--top { top: 0; }
+.reel--bottom { bottom: 0; }
+
+.galaxy.is-flight .reel,
+.galaxy.is-departing .reel {
+  height: 8%;
 }
 
 .travel-wash {
@@ -638,7 +688,7 @@
   padding: 2rem;
   text-align: center;
   pointer-events: none;
-  animation: pass 1.68s cubic-bezier(0.16, 0.84, 0.2, 1) forwards;
+  animation: pass 2.3s cubic-bezier(0.16, 0.84, 0.2, 1) forwards;
 }
 
 .pass h2 {
@@ -694,6 +744,14 @@
   box-shadow: 0 0 12px rgba(227, 175, 93, 0.45);
 }
 
+.galaxy.is-flight .link3d.is-active,
+.galaxy.is-departing .link3d.is-active {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 244, 214, 0.15) 35%, #fff8e8 50%, rgba(255, 244, 214, 0.15) 65%, transparent 100%);
+  background-size: 38% 100%;
+  background-repeat: no-repeat;
+  animation: run-light 0.85s linear infinite;
+}
+
 .links path {
   fill: none;
   stroke: rgba(238, 240, 243, 0.16);
@@ -721,8 +779,9 @@
 }
 
 .galaxy.is-travelling .planet.is-offpath,
-.galaxy.is-departing .planet.is-offpath {
-  opacity: 0.28;
+.galaxy.is-departing .planet.is-offpath,
+.galaxy.is-flight .planet.is-offpath {
+  opacity: 0.22;
 }
 
 .planet:hover,
@@ -1718,28 +1777,61 @@
 }
 
 @keyframes warp-ray {
-  from { transform: rotate(var(--r)) translateY(8px) scaleY(0.25); opacity: 0; }
-  28% { opacity: 0.9; }
-  to { transform: rotate(var(--r)) translateY(34vh) scaleY(1.6); opacity: 0; }
+  from { transform: rotate(var(--r)) translateY(0) scaleY(0.2); opacity: 0; }
+  22% { opacity: 1; }
+  to { transform: rotate(var(--r)) translateY(46vh) scaleY(2.4); opacity: 0; }
 }
 
 @keyframes lift {
   0% { opacity: 0; }
-  16% { opacity: 1; }
+  12% { opacity: 1; }
   100% { opacity: 1; }
 }
 
+@keyframes sky-lift {
+  from { transform: scale(1) translateY(0); }
+  to { transform: scale(1.22) translateY(-8%); filter: blur(0.6px); }
+}
+
+@keyframes sink {
+  to { opacity: 0; transform: translateY(18px); }
+}
+
 @keyframes rush-up {
-  from { transform: translateY(-8vh); opacity: 0; }
-  24% { opacity: 0.85; }
-  to { transform: translateY(120vh); opacity: 0; }
+  from { transform: translateY(-12vh) scaleY(0.6); opacity: 0; }
+  20% { opacity: 0.9; }
+  to { transform: translateY(130vh) scaleY(1.8); opacity: 0; }
 }
 
 @keyframes pass {
-  0% { opacity: 0; transform: translateY(18px); }
-  20% { opacity: 1; transform: none; }
-  68% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-18px); }
+  0% { opacity: 0; letter-spacing: 0.22em; transform: scale(1.06); }
+  18% { opacity: 1; letter-spacing: 0; transform: none; }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-22px) scale(0.98); }
+}
+
+@keyframes cam-roll {
+  0% { transform: rotateZ(0deg); }
+  16% { transform: rotateZ(-1.4deg) scale(1.03); }
+  100% { transform: none; }
+}
+
+@keyframes streak {
+  0% { transform: scaleY(1); opacity: 0.35; }
+  45% { transform: scaleY(9); opacity: 0.95; }
+  100% { transform: scaleY(16) translateY(-10px); opacity: 0; }
+}
+
+@keyframes flare {
+  0% { opacity: 0; }
+  10% { opacity: 0.8; }
+  34% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes run-light {
+  from { background-position: -20% 0; }
+  to { background-position: 140% 0; }
 }
 
 @keyframes lock {
@@ -1810,6 +1902,13 @@
   .lift,
   .lift-warp i,
   .pass,
+  .flare,
+  .local-sky,
+  .galaxy-scene,
+  .galaxy.is-flight .star,
+  .galaxy.is-departing .star,
+  .galaxy.is-flight .link3d.is-active,
+  .galaxy.is-departing .link3d.is-active,
   .galaxy-field,
   .starfield,
   .travel-wash,
@@ -1820,4 +1919,144 @@
   .galaxy-field,
   .starfield,
   .travel-wash { transition: none; }
+}
+
+.media-world {
+  min-height: 100dvh;
+  background: #f4f1ea;
+  color: #1a1a1a;
+}
+
+.media-world .site-header,
+.media-world .site-footer {
+  background: #f4f1ea;
+  color: #1a1a1a;
+  border-color: rgba(26, 26, 26, 0.12);
+}
+
+.media-world .wordmark,
+.media-world .text-link,
+.media-world .header-note,
+.media-world .site-footer a {
+  color: #1a1a1a;
+}
+
+.media-hero,
+.media-projects,
+.media-reverse,
+.media-palette {
+  padding: 2.2rem 1.4rem;
+}
+
+.media-kicker {
+  margin: 0 0 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+}
+
+.media-lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.08em;
+  margin: 0;
+  color: #1a1a1a;
+  font-family: "Varela Round", sans-serif;
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+.media-lockup--ink .media-name,
+.media-lockup--ink .media-signal {
+  color: #0055ff;
+}
+
+.media-lockup--paper,
+.media-lockup--paper .media-name,
+.media-lockup--paper .media-signal {
+  color: #fff;
+}
+
+.media-signal {
+  flex: 0 0 auto;
+  width: 0.62em;
+  height: 0.62em;
+  margin-left: 0.04em;
+}
+
+.media-lede,
+.media-reverse p:not(.media-lockup) {
+  max-width: 28rem;
+  margin: 1rem 0 0;
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+.media-projects {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.media-project {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.1rem 1.15rem;
+  border-radius: 1.1rem;
+  background: #0055ff;
+  color: #fff;
+}
+
+.media-project small {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+}
+
+.media-project b {
+  font-family: "Varela Round", sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 400;
+}
+
+.media-project span {
+  max-width: 36rem;
+  color: rgba(255, 255, 255, 0.84);
+  line-height: 1.4;
+}
+
+.media-reverse {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.media-palette div {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.4rem;
+}
+
+.media-palette span {
+  display: grid;
+  align-items: end;
+  min-height: 6.5rem;
+  padding: 0.6rem;
+  border: 1px solid rgba(26, 26, 26, 0.12);
+  border-radius: 0.7rem;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+}
+
+@media (min-width: 800px) {
+  .media-projects { grid-template-columns: 1fr 1fr; }
+  .media-hero,
+  .media-projects,
+  .media-reverse,
+  .media-palette { padding-inline: 2.4rem; }
+}
+
+@media (max-width: 720px) {
+  .media-palette div { grid-template-columns: 1fr 1fr; }
 }

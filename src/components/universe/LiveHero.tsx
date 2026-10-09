@@ -93,7 +93,7 @@ export function LiveHero({ onEnter }: { onEnter: (journey?: JourneyId) => void }
     if (launch) return;
     const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setLaunch(id);
-    window.setTimeout(() => onEnter(id), calm ? 0 : 1280);
+    window.setTimeout(() => onEnter(id), calm ? 0 : 1680);
   }
 
   const useNearby = () => {

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import { findWorld, galaxyRelationships, isWordmark, worldMaterials, worldSystems, type GalaxyWorld } from "@/lib/universe/catalog";
 import { CelestialBody } from "@/components/universe/CelestialBody";
+import { MediaWorld } from "@/components/universe/MediaWorld";
 import { getAtmosphereProfile, readWorldSignal, type WorldSignalSnapshot } from "@/lib/universe/atmosphere";
 
 function RelatedWorld({ world }: { world: GalaxyWorld }) {
@@ -45,6 +46,8 @@ export function WorldView({ slug }: { slug: string }) {
       </main>
     );
   }
+
+  if (world.id === "fourtee2media") return <MediaWorld />;
 
   const links = galaxyRelationships.filter((link) => link.source === world.id || link.target === world.id);
   const style = {

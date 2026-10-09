@@ -37,7 +37,13 @@ export function HomeUniverse({ entered, journey }: { entered: boolean; journey?:
           <Link to="/board">BOARD</Link>
         </nav>
       </header>
-      <main>{entered ? <GalaxyExplorer journey={journey} navIntent={intent} onIntentHandled={() => setIntent(null)} onPanel={setPanel} /> : <LiveHero onEnter={enter} />}</main>
+      <main>
+        {entered ? (
+          <GalaxyExplorer journey={journey} navIntent={intent} onIntentHandled={() => setIntent(null)} onPanel={setPanel} />
+        ) : (
+          <LiveHero onEnter={enter} />
+        )}
+      </main>
       {!entered ? (
         <footer className="site-footer">
           <p>TRANSMISSION COMPLETE</p>

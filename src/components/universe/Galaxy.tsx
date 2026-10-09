@@ -135,7 +135,7 @@ export function GalaxyExplorer({
       setInFlight(false);
       setCaption(null);
       flightTimer.current = null;
-    }, 1680);
+    }, 2300);
   }
 
   useEffect(() => {
@@ -498,6 +498,9 @@ export function GalaxyExplorer({
           ))}
         </div>
         </div>
+        <div className="flare" aria-hidden="true" />
+        <div className="reel reel--top" aria-hidden="true" />
+        <div className="reel reel--bottom" aria-hidden="true" />
         {caption ? (
           <div className="pass" key={caption.title}>
             <p className="eyebrow">{caption.kicker}</p>
